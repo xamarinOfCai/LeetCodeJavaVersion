@@ -1,2 +1,2 @@
 # LeetCodeJavaVersion
-这里用来记录leetCode的练习题的记录，这里用来练习自己的java的代码，提高java的代码的写作能力
+这里用来记录leetCode的练习题的记录，这里用来练习自己的java的代码，提高java的代码的编码能力
