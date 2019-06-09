@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @ClassName LongestSubStringWithoutRepeatingCharacters0003
@@ -20,7 +22,7 @@ public class LongestSubStringWithoutRepeatingCharacters0003 {
         testCases.add("au");
 
         for(int h = 0; h < testCases.size(); h++) {
-            int length = s.lengthOfLongestSubString(testCases.get(h));
+            int length = s.lengthOfLongestSubString1(testCases.get(h));
             System.out.println("最长的字符串的长度为 = [" + length + "]");
         }
     }
@@ -70,6 +72,31 @@ class Solution{
         length = maxString.length();
         System.out.println("maxString = [" + maxString + "]");
         return length;
+    }
+
+
+    /**
+     * 思路：采用滑动窗口的方式来实现
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubString1(String s){
+        int n = s.length();
+        Set<Character>subString = new HashSet<>();
+        int maxLength =0,i = 0,j =0;
+        while( i < n && j < n){
+            //【i,j)看看第j个字符是否包含在里面，不包含的话添加进来
+            if(!subString.contains(s.charAt(j))){
+                subString.add(s.charAt(j++));
+                maxLength = Math.max(maxLength,j-i);
+
+            }else{
+//                System.out.println("subString = [" + subString.toString() + "]");
+                subString.remove(s.charAt(i));
+                i++;
+            }
+        }
+        return maxLength;
     }
 
 }
